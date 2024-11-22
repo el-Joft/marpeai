@@ -88,7 +88,7 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   }))
 }
 
-const handleNextedChange = (e) => {
+const handleNextedChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     const [group, field] = name.split('.');
   
@@ -110,7 +110,7 @@ const handleCheckboxChange = (name, value) => {
   }))
 }
 
-const handleFileUpload = (e) => {
+const handleFileUpload = (e: { target: { files: any[] } }) => {
   const file = e.target.files[0]
   if (file) {
     setFormData(prevState => ({...prevState, medicalHistoryFile: file}))
