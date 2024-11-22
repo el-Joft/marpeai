@@ -11,6 +11,13 @@ import AppLayout from '../components/AppLayout'
 import {recipes} from '../data/index'
 import { DashboardSideNavbar } from '../components/DashboardSideNavBar'
 
+
+interface MealPlanItem {
+  meal_type: string;
+  recipe_name: string;
+  ingredients: string[];
+}
+
 // Generate random meal plan data
 const generateMealPlan = () => {
   const mealTypes = ['Breakfast', 'Lunch', 'Dinner', 'Snack']
@@ -27,7 +34,7 @@ const generateMealPlan = () => {
 
 export default function MealPlanPage() {
   const [selectedDate, setSelectedDate] = useState(new Date())
-	const [mealPlan, setMealPlan] = useState([])
+	const [mealPlan, setMealPlan] = useState<MealPlanItem[]>([]);
 
 	useEffect(() => {
     setMealPlan(generateMealPlan()) // Generate meal plan after client-side rendering
