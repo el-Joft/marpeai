@@ -84,7 +84,7 @@ const [formData, setFormData] = useState({
   questionnaireFilled: false
 })
 
-const handleInputChange = (e) => {
+const handleInputChange = (e: { target: any }) => {
   const { name, value } = e.target
   setFormData(prevState => ({
     ...prevState,
@@ -92,11 +92,11 @@ const handleInputChange = (e) => {
   }))
 }
 
-const handleNextedChange = (e) => {
+const handleNextedChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
     const [group, field] = name.split('.');
   
-    setFormData(prevState => ({
+    setFormData((prevState: any) => ({
       ...prevState,
       [group]: {
         ...prevState[group],
@@ -105,16 +105,16 @@ const handleNextedChange = (e) => {
     }));
   }
 
-const handleCheckboxChange = (name, value) => {
-  setFormData(prevState => ({
+const handleCheckboxChange = (name: string, value: string) => {
+  setFormData((prevState: any) => ({
     ...prevState,
     [name]: prevState[name].includes(value)
-      ? prevState[name].filter(item => item !== value)
+      ? prevState[name].filter((item: string) => item !== value)
       : [...prevState[name], value]
   }))
 }
 
-const handleFileUpload = (e) => {
+const handleFileUpload = (e: { target: { files: any[] } }) => {
   const file = e.target.files[0]
   if (file) {
     setFormData(prevState => ({...prevState, medicalHistoryFile: file}))
