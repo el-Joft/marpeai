@@ -80,7 +80,7 @@ const [formData, setFormData] = useState({
   socialEatingPatterns: '',
 })
 
-const handleInputChange = (e) => {
+const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   const { name, value } = e.target
   setFormData(prevState => ({
     ...prevState,
