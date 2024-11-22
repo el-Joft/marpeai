@@ -13,12 +13,12 @@ import { DashboardSideNavbar } from '../components/DashboardSideNavBar'
 import { useFormData } from '../context/FormDataContext';
 
 // Mock user data
-const userData = {
-  name: "John Doe",
-  weight: 75, // in kg
-  height: 175, // in cm
-  bmi: 24.5,
-}
+// const userData = {
+//   name: "John Doe",
+//   weight: 75, // in kg
+//   height: 175, // in cm
+//   bmi: 24.5,
+// }
 
 // Mock blood pressure data
 const initialBloodPressureData = [
@@ -29,15 +29,15 @@ const initialBloodPressureData = [
   { date: "2023-11-05", systolic: 119, diastolic: 81 },
 ]
 
-function isEmpty(obj: any) {
-  for (const prop in obj) {
-    if (Object.hasOwn(obj, prop)) {
-      return false;
-    }
-  }
+// function isEmpty(obj: any) {
+//   for (const prop in obj) {
+//     if (Object.hasOwn(obj, prop)) {
+//       return false;
+//     }
+//   }
 
-  return true;
-}
+//   return true;
+// }
 
 export default function UserDashboard() {
   const router = useRouter(); // Get the router to navigate between pages

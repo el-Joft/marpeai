@@ -3,7 +3,7 @@ import AppLayout from "@/components/AppLayout"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Heart, Activity, LineChart, Users, CheckCircle, ArrowRight, Utensils, BookOpen, Stethoscope, PiggyBank, GraduationCap } from "lucide-react"
+import { Heart, Activity, CheckCircle, ArrowRight, Utensils, BookOpen } from "lucide-react"
 import Image from "next/image"
 
 export default function LandingPage() {
@@ -39,10 +39,10 @@ export default function LandingPage() {
                 Personalized meal planning and education to empower patients, healthcare providers, and nutritionists in managing hypertension effectively.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <a href="/account/register"><Button size="lg" className="flex items-center">
+                <Link href="/account/register"><Button size="lg" className="flex items-center">
                   Start Your Journey
                   <ArrowRight className="ml-2 h-4 w-4" />
-                </Button></a>
+                </Button></Link>
                 <Button size="lg" variant="outline">
                   Book a Demo
                 </Button>
@@ -131,7 +131,7 @@ export default function LandingPage() {
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-6 w-6 text-primary mr-2 mt-1" />
-                      <span>Educational resources to understand nutrition's impact on blood pressure</span>
+                      <span>Educational resources to understand nutrition&apos;s impact on blood pressure</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-6 w-6 text-primary mr-2 mt-1" />
@@ -298,10 +298,10 @@ export default function LandingPage() {
           <p className="text-xl mb-8 opacity-90">
             Join thousands of users who are taking control of their hypertension through personalized nutrition
           </p>
-          <a href="/account/register"><Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-gray-100">
+          <Link href="/account/register"><Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-gray-100">
             Get Started Now
             <ArrowRight className="ml-2 h-4 w-4" />
-          </Button></a>
+          </Button></Link>
         </div>
       </section>
 

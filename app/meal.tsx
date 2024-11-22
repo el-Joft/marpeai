@@ -223,7 +223,7 @@ const renderStep = () => {
                     <Checkbox
                       id={condition}
                       checked={formData.otherConditions.includes(condition)}
-                      onCheckedChange={(checked) => handleCheckboxChange('otherConditions', condition)}
+                      onCheckedChange={() => handleCheckboxChange('otherConditions', condition)}
                     />
                     <Label htmlFor={condition}>{condition}</Label>
                   </div>
@@ -275,7 +275,7 @@ const renderStep = () => {
                     <Checkbox
                       id={restriction}
                       checked={formData.dietaryRestrictions.includes(restriction)}
-                      onCheckedChange={(checked) => handleCheckboxChange('dietaryRestrictions', restriction)}
+                      onCheckedChange={() => handleCheckboxChange('dietaryRestrictions', restriction)}
                     />
                     <Label htmlFor={restriction}>{restriction}</Label>
                   </div>
@@ -352,7 +352,7 @@ const renderStep = () => {
                     <Checkbox
                       id={resource}
                       checked={formData.kitchenResources.includes(resource)}
-                      onCheckedChange={(checked) => handleCheckboxChange('kitchenResources', resource)}
+                      onCheckedChange={() => handleCheckboxChange('kitchenResources', resource)}
                     />
                     <Label htmlFor={resource}>{resource}</Label>
                   </div>
@@ -367,7 +367,7 @@ const renderStep = () => {
                     <Checkbox
                       id={habit}
                       checked={formData.diningHabits.includes(habit)}
-                      onCheckedChange={(checked) => handleCheckboxChange('diningHabits', habit)}
+                      onCheckedChange={() => handleCheckboxChange('diningHabits', habit)}
                     />
                     <Label htmlFor={habit}>{habit}</Label>
                   </div>
@@ -390,7 +390,7 @@ const renderStep = () => {
                     <Checkbox
                       id={goal}
                       checked={formData.healthGoals.includes(goal)}
-                      onCheckedChange={(checked) => handleCheckboxChange('healthGoals', goal)}
+                      onCheckedChange={() => handleCheckboxChange('healthGoals', goal)}
                     />
                     <Label htmlFor={goal}>{goal}</Label>
                   </div>
@@ -405,7 +405,7 @@ const renderStep = () => {
                     <Checkbox
                       id={motivation}
                       checked={formData.motivations.includes(motivation)}
-                      onCheckedChange={(checked) => handleCheckboxChange('motivations', motivation)}
+                      onCheckedChange={() => handleCheckboxChange('motivations', motivation)}
                     />
                     <Label htmlFor={motivation}>{motivation}</Label>
                   </div>

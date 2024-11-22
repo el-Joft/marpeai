@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
+import { Link } from "../../components/Link"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { Button } from "@/components/ui/button"
@@ -142,9 +143,9 @@ export default function SignUpPage() {
         <CardFooter className="flex justify-center">
           <p className="text-sm text-gray-600">
             Already have an account?{" "}
-            <a href="/account/login" className="text-blue-600 hover:underline">
+            <Link href="/account/login" className="text-blue-600 hover:underline">
               Log in
-            </a>
+            </Link>
           </p>
         </CardFooter>
       </Card>
