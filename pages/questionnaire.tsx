@@ -129,7 +129,7 @@ const handlePrevious = () => {
   setStep(prevStep => prevStep - 1)
 }
 
-const handleSubmit = (e) => {
+const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
   e.preventDefault();
   formData['questionnaireFilled'] = true
   localStorage.setItem('formData', JSON.stringify(formData)); // Ensure localStorage is updated
