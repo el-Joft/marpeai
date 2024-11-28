@@ -12,6 +12,7 @@ import { Progress } from "@/components/ui/progress"
 
 import AppLayout from '../components/AppLayout'
 import { useFormData } from '../context/FormDataContext';
+import { Link } from '@/components/Link'
 
 export default function Home() {
 const router = useRouter()
@@ -613,7 +614,7 @@ return (
 <AppLayout>
   <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
     <div className="sm:mx-auto sm:w-full sm:max-w-md">
-      <h1 className="text-center text-3xl font-extrabold text-gray-900 mb-6">Marpe AI</h1>
+      <Link href="/"><h1 className="text-center text-3xl font-extrabold text-gray-900 mb-6">Marpe AI</h1></Link>
     </div>
     <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-4xl">
       <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">

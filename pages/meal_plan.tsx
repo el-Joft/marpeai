@@ -57,7 +57,7 @@ export default function MealPlanPage() {
 
 
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Your Personalized Meal Plan</h1>
+      <h1 className="text-2xl font-bold mb-8">Your Personalized Meal Plan</h1>
       <Card className="mb-8">
         <CardHeader>
           <div className="flex items-center justify-between">
@@ -113,11 +113,11 @@ export default function MealPlanPage() {
           </div>
         </CardContent>
       </Card>
-      <div className="flex justify-center">
+      {/* <div className="flex justify-center">
         <Button size="lg">
           Generate Shopping List
         </Button>
-      </div>
+      </div> */}
     </div>
 		</div>
     </AppLayout>

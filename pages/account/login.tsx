@@ -20,6 +20,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import AppLayout from "@/components/AppLayout"
+import MarpeAiLogo from "@/components/Logo"
 
 const formSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
@@ -55,6 +56,19 @@ export default function LoginPage() {
     <AppLayout>
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <Card className="w-full max-w-md">
+      <div className="sm:mx-auto sm:w-full sm:max-w-md pt-5">
+        <Link href="/">
+      <div className="flex items-center justify-center space-x-4"> {/* Flex container centered horizontally and vertically */}
+        
+        <MarpeAiLogo 
+          width={30}
+          height={30} 
+          className="logo" 
+        />
+          <h1 className="text-3xl font-extrabold text-gray-900 mb-0">Marpe AI</h1>
+      </div>
+      </Link>
+    </div>
         <CardHeader>
           <CardTitle>Login</CardTitle>
           <CardDescription>Enter your credentials to access your account</CardDescription>
