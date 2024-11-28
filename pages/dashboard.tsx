@@ -91,7 +91,7 @@ export default function UserDashboard() {
   const bmi = formGlobalData?.weight && formGlobalData?.height
   ? (
       (parseFloat(formGlobalData.weight) / 
-      (parseFloat(formGlobalData.height) * parseFloat(formGlobalData.height)))
+      ((parseFloat(formGlobalData.height) / 100) ** 2))
     ).toFixed(1)
   : 'No data';
 
@@ -103,7 +103,7 @@ export default function UserDashboard() {
 
       {/* Main content */}
       <main className="flex-1 p-8 overflow-y-auto">
-        <h1 className="text-3xl font-bold mb-6">Welcome, {formGlobalData.fullName}</h1>
+        <h1 className="text-2xl font-bold mb-6">Welcome, {formGlobalData.fullName}</h1>
         
         {/* Health Data Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">

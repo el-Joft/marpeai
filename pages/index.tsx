@@ -1,12 +1,31 @@
+import { useState, useRef } from "react"
 import { Link } from "../components/Link"
 import AppLayout from "@/components/AppLayout"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Heart, Activity, CheckCircle, ArrowRight, Utensils, BookOpen } from "lucide-react"
+import { Activity, CheckCircle, ArrowRight, Utensils, BookOpen, Play, Pause } from "lucide-react"
+import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "@/components/ui/dialog"
 import Image from "next/image"
+import { useFormData } from "@/context/FormDataContext"
+import MarpeAiLogo from "@/components/Logo"
 
 export default function LandingPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const { formGlobalData } = useFormData(); // Get form data from context
+
+  const toggleVideo = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause()
+      } else {
+        videoRef.current.play()
+      }
+      setIsPlaying(!isPlaying)
+    }
+  }
   return (
     <AppLayout>
     <div className="flex flex-col min-h-screen">
@@ -14,15 +33,28 @@ export default function LandingPage() {
       <header className="border-b">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <Heart className="h-6 w-6 text-primary" />
-            <span className="text-xl font-bold lato-regular">Marpe AI</span>
+            {/* <Heart className="h-6 w-6 text-primary" /> */}
+            <MarpeAiLogo 
+              width={30}
+              height={30} 
+              className="logo" 
+            />
+            <span className="text-xl font-bold">Marpe AI</span>
           </div>
-          <nav className="hidden md:flex items-center space-x-8 lato-regular">
+          <nav className="hidden md:flex items-center space-x-8">
             <a href="#features" className="text-sm font-medium hover:text-primary">Features</a>
             <a href="#for-whom" className="text-sm font-medium hover:text-primary">For whom</a>
             <a href="#how-it-works" className="text-sm font-medium hover:text-primary">How it works</a>
-            <Link href="/account/login" className="btn btn-link"><Button variant="outline">Sign In</Button></Link>
-            <Link href="/account/register" className="btn btn-link"><Button>Get Started</Button></Link>
+            {formGlobalData.questionnaireFilled ? (
+              <Link href="/dashboard" className="btn btn-link"><Button>Dashboard</Button></Link>
+            ): (
+              <>
+              <Link href="/account/login" className="btn btn-link"><Button variant="outline">Sign In</Button></Link>
+              <Link href="/account/register" className="btn btn-link"><Button>Get Started</Button></Link>
+              </>
+            ) 
+            }
+            
           </nav>
         </div>
       </header>
@@ -43,9 +75,40 @@ export default function LandingPage() {
                   Start Your Journey
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button></Link>
-                <Button size="lg" variant="outline">
-                  Book a Demo
-                </Button>
+                <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+                    <DialogTrigger asChild>
+                      <Button size="lg" variant="outline">
+                      Watch our story
+                      <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          className="bi bi-play-fill"
+                          viewBox="0 0 16 16"
+                          style={{ marginRight: '8px' }} // Adds spacing between the icon and text
+                        >
+                          <path d="M11.596 8.004l-6-4a.5.5 0 0 0-.896.44v8a.5.5 0 0 0 .896.44l6-4a.5.5 0 0 0 0-.88z" />
+                        </svg>
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[725px]">
+                      <DialogHeader>
+                        {/* <DialogTitle>Demo Video</DialogTitle> */}
+                      </DialogHeader>
+                      <div className="aspect-video">
+                        <iframe
+                          width="100%"
+                          height="100%"
+                          src="https://res.cloudinary.com/fehintolu/video/upload/v1732822456/empowering-health-management-with-marpeai_bwjw4l.mp4"
+                          title="Our story"
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        ></iframe>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
               </div>
               <div className="flex items-center space-x-4 text-sm">
                 <CheckCircle className="h-4 w-4 text-primary" />
@@ -112,7 +175,7 @@ export default function LandingPage() {
       {/* For Whom Section */}
       <section id="for-whom" className="bg-gray-50 py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-center">Who Benefits from NutriCare AI?</h2>
+          <h2 className="text-3xl font-bold mb-12 text-center">Who Benefits from Marpe AI?</h2>
           <Tabs defaultValue="patients" className="w-full">
             <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4">
               <TabsTrigger value="patients">Patients</TabsTrigger>
@@ -247,7 +310,7 @@ export default function LandingPage() {
       {/* How It Works Section */}
       <section id="how-it-works" className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-center">How NutriCare AI Works</h2>
+          <h2 className="text-3xl font-bold mb-12 text-center">How Marpe AI Works</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <Card>
               <CardContent className="p-6 space-y-4">
@@ -288,6 +351,50 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+
+      {/* Our Story Video Section */}
+      <section className="py-20 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold mb-8 text-center">Our Story</h2>
+            <div className="max-w-4xl mx-auto">
+              <div className="relative aspect-video rounded-xl overflow-hidden shadow-xl">
+                <Image
+                  src="/placeholder.jpg?height=720&width=1280"
+                  alt="Video Thumbnail"
+                  fill
+                  // objectFit="cover"
+                  style={{
+                    objectFit: 'cover', // Use the objectFit style here
+                    objectPosition: 'center', // Optionally set the object position (center, top, etc.)
+                  }}
+                  className={`transition-opacity duration-300 ${isPlaying ? 'opacity-0' : 'opacity-100'}`}
+                />
+                <video
+                  ref={videoRef}
+                  className="w-full h-full"
+                  src="https://res.cloudinary.com/fehintolu/video/upload/v1732822456/empowering-health-management-with-marpeai_bwjw4l.mp4"
+                  poster="/placeholder.jpg?height=720&width=1280"
+                  preload="metadata"
+                >
+                  Your browser does not support the video tag.
+                </video>
+                <Button
+                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary/80 hover:bg-primary text-white rounded-full p-4"
+                  onClick={toggleVideo}
+                  aria-label={isPlaying ? "Pause video" : "Play video"}
+                >
+                  {isPlaying ? <Pause className="h-8 w-8" /> : <Play className="h-8 w-8" />}
+                </Button>
+              </div>
+              <div className="mt-6 text-center">
+                <h3 className="text-xl font-semibold mb-2">Revolutionizing Hypertension Management</h3>
+                <p className="text-muted-foreground">
+                  Discover how Marpe AI is changing lives through personalized nutrition plan.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
       {/* CTA Section */}
       <section className="bg-primary text-primary-foreground py-20">
@@ -343,7 +450,7 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="border-t mt-12 pt-8 text-center text-muted-foreground">
-            <p>&copy; {new Date().getFullYear()} NutriCare AI. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Marpe AI. All rights reserved.</p>
           </div>
         </div>
       </footer>
