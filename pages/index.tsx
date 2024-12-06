@@ -26,6 +26,12 @@ export default function LandingPage() {
       setIsPlaying(!isPlaying)
     }
   }
+
+  const email = 'mymarpeai@gmail.com'; // Replace with your email address
+  const subject = 'Contact Us';
+  const body = 'Hello, I would like to inquire about...';
+  const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
   return (
     <AppLayout>
     <div className="flex flex-col min-h-screen">
@@ -45,6 +51,8 @@ export default function LandingPage() {
             <a href="#features" className="text-sm font-medium hover:text-primary">Features</a>
             <a href="#for-whom" className="text-sm font-medium hover:text-primary">For whom</a>
             <a href="#how-it-works" className="text-sm font-medium hover:text-primary">How it works</a>
+            <a href={mailtoLink} className="text-sm font-medium hover:text-primary">Contact us</a>
+            
             {formGlobalData.questionnaireFilled ? (
               <Link href="/dashboard" className="btn btn-link"><Button>Dashboard</Button></Link>
             ): (
