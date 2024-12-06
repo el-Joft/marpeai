@@ -104,6 +104,18 @@ body {
   font-style: normal;
 }
 
+.base-font-bold {
+  font-family: "Hanken Grotesk", sans-serif!important;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.base-font-normal {
+  font-family: "Hanken Grotesk", sans-serif!important;
+  font-weight: 300;
+  font-style: normal;
+}
+
 .lato-black {
   font-family: "Lato", sans-serif;
   font-weight: 900;
