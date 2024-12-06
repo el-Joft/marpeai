@@ -20,73 +20,69 @@ const [step, setStep] = useState(0)
 const { setGlobalFormData } = useFormData();
 const [formData, setFormData] = useState({
   // Basic Demographic Information
-  fullName: 'John Doe',
-  age: '54',
-  gender: 'Male',
-  weight: '85',
-  height: '170',
-  contactInfo: 'john.doe@email.com',
+  fullName: '',
+  age: '',
+  gender: '',
+  weight: '',
+  height: '',
+  contactInfo: '',
 
   // Medical History
-  hasHypertension: true,
-  hypertensionDuration: '8 years',
-  hypertensionSeverity: 'Moderate',
-  otherConditions: ['Type 2 Diabetes', 'High cholesterol'],
-  allergies: 'None',
-  medications: 'Lisinopril (10 mg daily), Metformin (500 mg twice a day), Simvastatin (20 mg at night)',
+  hasHypertension: false,
+  hypertensionDuration: '',
+  hypertensionSeverity: '',
+  otherConditions: [],
+  allergies: '',
+  medications: '',
   medicalHistoryFile: null,
 
   // Dietary Preferences and Restrictions
-  foodPreferences: { likes: 'Grilled chicken, steamed vegetables, whole grains', dislikes: 'Spicy food, fried food, dairy' },
-  dietaryRestrictions: ['Low sodium', 'Low fat', 'Low sugar'],
-  foodAllergies: 'None',
+  foodPreferences: { likes: '', dislikes: '' },
+  dietaryRestrictions: [],
+  foodAllergies: '',
 
   // Lifestyle and Behavioral Data
-  dailySchedule: 'Work from 9 AM to 5 PM. Exercise in the morning and evening.',
-  activityLevel: 'Moderately active (Walking 30 minutes daily, light jogging on weekends)',
-  cookingSkills: 'Intermediate (Can prepare simple meals, enjoys cooking)',
-  kitchenResources: ['Oven', 'Stovetop', 'Microwave', 'Blender'],
-  diningHabits: ['Eat 3 meals a day, occasionally snacks in the afternoon', 'Prefers home-cooked meals'],
+  dailySchedule: '',
+  activityLevel: '',
+  cookingSkills: '',
+  kitchenResources: [],
+  diningHabits: [],
 
   // Health Goals and Motivations
-  healthGoals: ['Lower blood pressure', 'Reduce cholesterol', 'Manage blood sugar levels'],
-  motivations: ['Avoid medications in the long term', 'Feel more energetic', 'Prevent heart disease'],
-  preferredOutcomes: 'Normal blood pressure, better blood sugar control, improved heart health',
-  timeline: '3-6 months',
+  healthGoals: [],
+  motivations: [],
+  preferredOutcomes: '',
+  timeline: '',
 
   // Current Dietary Habits
-  averageDailyIntake: '2,200 calories, 120g of protein, 230g of carbs, 60g of fat',
-  snackFrequency: 'Occasionally, 2-3 times per week (usually fruit or nuts)',
-  fluidIntake: '8 cups of water per day, 1-2 cups of tea',
-  portionSizes: 'Moderate portion sizes, prefers balanced meals',
+  averageDailyIntake: '',
+  snackFrequency: '',
+  fluidIntake: '',
+  portionSizes: '',
 
   // Health Data Tracking
-  bloodPressureReadings: [90],
-  weightTrends: [
-    80
-  ],
-  physicalActivityLogs: [
-    
-  ],
-  mealSatisfaction: 'Generally satisfied with meals, occasionally feel they could use more flavor',
+  bloodPressureReadings: [],
+  weightTrends: [],
+  physicalActivityLogs: [],
+  mealSatisfaction: '',
 
   // Feedback and Experience
-  userSatisfaction: 'Satisfied with progress but looking for more variety in meals',
-  easeOfUse: 'Easy to follow, though grocery shopping can be difficult at times',
-  suggestions: 'Include more recipes with herbs and spices for flavor',
-  adherenceIssues: 'Sometimes struggle to avoid high-sodium foods when eating out',
+  userSatisfaction: '',
+  easeOfUse: '',
+  suggestions: '',
+  adherenceIssues: '',
 
   // Integration with Healthcare Providers
-  healthcareProviderInfo: 'Dr. Sarah Mitchell, Cardiologist, ABC Health Clinic',
-  consentToShareData: true,
-  providerNotes: 'Patient is improving with lifestyle changes, monitor cholesterol levels regularly',
+  healthcareProviderInfo: '',
+  consentToShareData: false,
+  providerNotes: '',
 
   // Psychological and Social Context
-  stressLevels: 'Moderate, tends to get stressed during work deadlines',
-  supportSystem: 'Spouse, close friends, healthcare team',
-  emotionalRelationshipWithFood: 'Uses food as comfort but tries to stick to healthier choices',
-  socialEatingPatterns: 'Often eats out with friends on weekends but tries to make healthy choices',
-  questionnaireFilled: true
+  stressLevels: '',
+  supportSystem: '',
+  emotionalRelationshipWithFood: '',
+  socialEatingPatterns: '',
+  questionnaireFilled: false
 })
 
 const handleInputChange = (e: { target: any }) => {
